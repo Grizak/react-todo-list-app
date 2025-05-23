@@ -5,7 +5,15 @@
     {
       "src": "favicon.ico",
       "sizes": "1024x1024 512x512 192x192 64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "Screenshot.png",
+      "type": "image/png",
+      "form_factor": "wide",
+      "sizes": "1920x1080"
     }
   ],
   "start_url": "/",
