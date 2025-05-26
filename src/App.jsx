@@ -86,6 +86,7 @@ function App() {
   return (
     <div>
       <main>
+        <h1>Welcome to Listify</h1>
         <div className="addTask">
           <input
             type="text"
