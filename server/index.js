@@ -134,6 +134,37 @@ authRouter.post("/login", async (req, res) => {
   }
 });
 
+authRouter.post("/logout", async (req, res) => {
+  const { token } = req.body;
+  try {
+    const user = await User.findOne({ tokens: token });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    user.tokens = user.tokens.filter((t) => t !== token);
+    await user.save();
+    res.status(200).json({ message: "Logout successful" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+authRouter.post("/verify", async (req, res) => {
+  const { token } = req.body;
+  try {
+    const user = await User.findOne({ tokens: token });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.status(200).json({
+      message: "Token is valid",
+      user: user.select("-password").select("-tokens"),
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 apiRouter.use("/auth", authRouter);
 
 app.use("/api", apiRouter);
