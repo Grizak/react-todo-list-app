@@ -1,5 +1,11 @@
 const CACHE_NAME = "ToDoListApp_v1";
-const urlsToCache = ["favicon.ico", "robots.txt"];
+const urlsToCache = [
+  "/favicon.ico",
+  "/robots.txt",
+  "/",
+  "/manifest.json",
+  "/Screenshot.png",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
